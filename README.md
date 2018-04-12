@@ -9,12 +9,13 @@ bash <(curl -s https://raw.githubusercontent.com/yon2004/ubnt_cloudflared/master
 ```
 
 ### uninstall
-If you wish to go back to using the builtin DNS do the following.  
+To go back to using the builtin DNS do the following.  
 ```sh
 sudo /etc/init.d/cloudflared-dns stop  
 sudo rm /etc/init.d/cloudflared-dns
 sudo rm /usr/local/bin/cloudflared
 ```
+Configure DNS in the webUI and dnsmasq will start after you save your configuration.
     
 ### notes
 when cloudflared is installed do not configure the DNS service in the webUI without first uninstalling cloudflared as both services use port 53.
