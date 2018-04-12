@@ -1,7 +1,7 @@
 set -e
 
-echo "Version 0.2b"
-echo "Do you wish to disable the default DNS server and install cloudflared proxy?" 
+echo "Version 0.2c"
+echo "Do you wish to configure the default DNS server and install cloudflared proxy?" 
 read -r -p "Are you sure? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
@@ -13,7 +13,9 @@ fi
 
 echo "removing dns server" 
 /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper begin
-/opt/vyatta/sbin/vyatta-cfg-cmd-wrapper delete service dns forwarding
+/opt/vyatta/sbin/vyatta-cfg-cmd-wrapper set service dns forwarding cache-size 10000 
+/opt/vyatta/sbin/vyatta-cfg-cmd-wrapper set service dns forwarding options "no-resolv"
+/opt/vyatta/sbin/vyatta-cfg-cmd-wrapper set service dns forwarding options "server=127.0.0.1#5053"
 /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper commit
 /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper end
 
