@@ -12,7 +12,7 @@ else
 	exit 1
 fi
 
-echo "removing dns server" 
+echo "configure dns server" 
 /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper begin
 /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper set service dns forwarding cache-size 10000 
 /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper set service dns forwarding options "no-resolv"
