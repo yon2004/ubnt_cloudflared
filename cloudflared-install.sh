@@ -1,6 +1,6 @@
 set -e
 
-echo "Version 0.2a"
+echo "Version 0.2b"
 echo "Do you wish to disable the default DNS server and install cloudflared proxy?" 
 read -r -p "Are you sure? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
@@ -37,7 +37,7 @@ echo "setting execute permission on /usr/local/bin/cloudflared"
 sudo /bin/chmod +x /usr/local/bin/cloudflared
 echo "setting execute permission on /etc/init.d/cloudflared-dns"
 sudo /bin/chmod +x /etc/init.d/cloudflared-dns
-echo "starting cloudflared-dns"
 sudo /etc/init.d/cloudflared-dns start
 
 echo "cloudflared has been installed"
+echo "now you should update your DHCP DNS setting to direct clients to me"
