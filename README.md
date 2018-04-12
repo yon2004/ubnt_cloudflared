@@ -7,7 +7,7 @@ in a ssh session run the following command
     bash <(curl -s https://raw.githubusercontent.com/yon2004/ubnt_cloudflared/master/cloudflared-install.sh)
 
 ### uninstall
-If you wish to go back to using the builtin DNS do the following.
+If you wish to go back to using the builtin DNS do the following.  
     sudo /etc/init.d/cloudflared-dns stop  
     sudo rm /etc/init.d/cloudflared-dns
     
