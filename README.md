@@ -1,5 +1,5 @@
 # ubnt_cloudflared
-A installer that installs cloudflared dns-proxy on edge router lite.
+This script will install cloudflared dns-proxy on ubiquiti edgemax router series and possibly the UniFi® Security Gateway.
 
 ## guide
 ### install
@@ -19,6 +19,9 @@ Configure DNS in the webUI and dnsmasq will start after you save your configurat
     
 ### notes
 when cloudflared is installed do not configure the DNS service in the webUI without first uninstalling cloudflared as both services use port 53.
+
+## tested hardware
+* EdgeRouter Lite v1.10.1
 
 ## credits
 https://bendews.com/posts/implement-dns-over-https/
