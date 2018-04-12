@@ -29,13 +29,13 @@ if [-f /usr/local/bin/cloudflared]; then
 fi
 
 echo "downloading cloudflared binary"
-sudo /usr/bin/curlcurl https://raw.githubusercontent.com/yon2004/ubnt_cloudflared/master/cloudflared --output /usr/local/bin/cloudflared
+sudo /usr/bin/curl https://raw.githubusercontent.com/yon2004/ubnt_cloudflared/master/cloudflared --output /usr/local/bin/cloudflared
 echo "downloading cloudflared init.d script"
-sudo /usr/bin/curlcurl https://raw.githubusercontent.com/yon2004/ubnt_cloudflared/master/cloudflared-dns --output /etc/init.d/cloudflared-dns
+sudo /usr/bin/curl https://raw.githubusercontent.com/yon2004/ubnt_cloudflared/master/cloudflared-dns --output /etc/init.d/cloudflared-dns
 echo "setting execute permission on /usr/local/bin/cloudflared"
-sudo /bin/chmod/chmod +x /usr/local/bin/cloudflared
+sudo /bin/chmod +x /usr/local/bin/cloudflared
 echo "setting execute permission on /etc/init.d/cloudflared-dns"
-sudo /bin/chmod/chmod +x /etc/init.d/cloudflared-dns
+sudo /bin/chmod +x /etc/init.d/cloudflared-dns
 echo "starting cloudflared-dns"
 sudo /etc/init.d/cloudflared-dns start
 
