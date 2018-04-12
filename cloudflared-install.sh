@@ -1,6 +1,6 @@
 set -e
 
-echo "Version 0.1"
+echo "Version 0.2a"
 echo "Do you wish to disable the default DNS server and install cloudflared proxy?" 
 read -r -p "Are you sure? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
