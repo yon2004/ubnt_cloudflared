@@ -10,7 +10,7 @@
 ### END INIT INFO
 
 dir=""
-cmd="/usr/local/bin/cloudflared proxy-dns --address 0.0.0.0"
+cmd="/usr/local/bin/cloudflared proxy-dns --port 5053"
 user=""
 
 name=`basename $0`
