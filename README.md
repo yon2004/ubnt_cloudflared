@@ -11,14 +11,8 @@ bash <(curl -s https://raw.githubusercontent.com/yon2004/ubnt_cloudflared/master
 ### Uninstall
 To go back to using the builtin DNS do the following.  
 ```sh
-sudo /etc/init.d/cloudflared-dns stop  
-sudo rm /etc/init.d/cloudflared-dns
-sudo rm /usr/local/bin/cloudflared
+bash <(curl -s https://raw.githubusercontent.com/yon2004/ubnt_cloudflared/master/cloudflared-uninstall.sh)
 ```
-Configure DNS in the webUI and dnsmasq will start after you save your configuration.
-    
-### Notes
-when cloudflared is installed do not configure the DNS service in the webUI without first uninstalling cloudflared as both services use port 53.
 
 ## Tested Hardware
 * EdgeRouter Lite v1.10.1
