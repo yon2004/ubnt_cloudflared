@@ -1,3 +1,4 @@
+no-autoupdate: true
 proxy-dns: true
 proxy-dns-upstream:
  - https://1.1.1.1/dns-query
