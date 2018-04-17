@@ -11,36 +11,41 @@ else
     exit 1
 fi
 
-if [ -f /etc/init.d/cloudflared-dns ]; then
-    echo "found /etc/init.d/cloudflared-dns stopping service"
-    sudo /etc/init.d/cloudflared-dns stop
-    echo "found /etc/init.d/cloudflared-dns removing previous version"
-    sudo rm /etc/init.d/cloudflared-dns
+WORKING_FILE=/etc/init.d/cloudflared
+if [ -f $WORKING_FILE ]; then
+    echo "Found $WORKING_FILE stopping service"
+    sudo $WORKING_FILE stop
+    echo "Found /etc/init.d/cloudflared-dns removing file"
+    sudo rm $WORKING_FILE
 fi
 
-if [ -f /usr/local/bin/cloudflared ]; then
-    echo "found /usr/local/bin/cloudflared removing previous version"
-    sudo rm /usr/local/bin/cloudflared
+WORKING_FILE=/usr/local/bin/cloudflared
+if [ -f $WORKING_FILE ]; then
+    echo "Found $WORKING_FILE removing file"
+    sudo rm $WORKING_FILE
 fi
 
-if [ -f /etc/cloudflared/config.yml ]; then
-    read -r -p "found /etc/cloudflared/config.yml would you like to install the repository maintainers configuration?? [y/N] " response
+WORKING_FILE=/etc/cloudflared/config.yml
+if [ -f $WORKING_FILE ]; then
+    read -r -p "found $WORKING_FILE would you like to install the repository maintainers configuration?? [y/N] " response
     if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
             echo "Replacing your configuration. Moving your configuration to /tmp/cloudflared-config.yml-backup"
-            sudo mv /etc/cloudflared/config.yml /tmp/cloudflared-config.yml-backup
+            sudo mv $WORKING_FILE /tmp/cloudflared-config.yml-backup
         else
             echo "Keeping your configuration."
 	fi
 fi
 
-if [ ! -d /etc/cloudflared ]; then
-    echo "make folder /etc/cloudflared"
-    sudo mkdir /etc/cloudflared
+WORKING_FILE=/etc/cloudflared
+if [ ! -d $WORKING_FILE ]; then
+    echo "make folder $WORKING_FILE"
+    sudo mkdir $WORKING_FILE
 fi
 
+WORKING_FILE=/etc/cloudflared/config.yml
 if [ ! -f /etc/cloudflared/config.yml ]; then
     echo "Downloading config.yml"
-    sudo /usr/bin/curl --fail https://raw.githubusercontent.com/yon2004/ubnt_cloudflared/master/config.yml --output /etc/cloudflared/config.yml
+    sudo /usr/bin/curl --fail https://raw.githubusercontent.com/yon2004/ubnt_cloudflared/master/config.yml --output $WORKING_FILE
 fi
 
 echo "downloading cloudflared binary"
