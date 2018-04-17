@@ -31,7 +31,6 @@ if [ -f /etc/cloudflared/config.yml ]; then
         else
             echo "Keeping your configuration."
 	fi
-    sudo rm /usr/local/bin/cloudflared
 fi
 
 if [ ! -d /etc/cloudflared ]; then
