@@ -4,7 +4,7 @@ set -e
 echo "Version 0.2c"
 echo "Do you wish to configure the default DNS server and install cloudflared proxy?" 
 read -r -p "Are you sure? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]] then
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
     echo "Starting configuration" 
 else
     echo "exit cloudflared-installer"
@@ -33,7 +33,7 @@ fi
 
 if [ -f /etc/cloudflared/config.yml ]; then
     read -r -p "found /etc/cloudflared/config.yml would you like to install the repository maintainers configuration?? [y/N] " response
-    if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]] then
+    if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
             echo "Replacing your configuration. Moving your configuration to /tmp/cloudflared-config.yml-backup"
             sudo mv /etc/cloudflared/config.yml /tmp/cloudflared-config.yml-backup
         else
