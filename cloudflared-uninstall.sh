@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "Version 0.1"
+echo "Version 0.2"
 echo "Do you wish to remove cloudflared proxy and changes made to the DNS server?" 
 read -r -p "Are you sure? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
