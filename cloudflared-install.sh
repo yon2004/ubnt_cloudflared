@@ -57,6 +57,7 @@ sudo /etc/init.d/cloudflared start
 
 echo "configure dns server" 
 /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper begin
+/opt/vyatta/sbin/vyatta-cfg-cmd-wrapper delete service dns forwarding options
 /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper set service dns forwarding cache-size 2500 
 /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper set service dns forwarding options "no-resolv"
 /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper set service dns forwarding options "server=127.0.0.1#5053"
