@@ -15,7 +15,9 @@ read -r -p "Do you want to use Cloudflare DNS servers rather than your ISP? [y/N
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
     echo "revert configuration changes and pointing dns to 1.1.1.1"
     /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper begin
-    /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper delete service dns forwarding options "server=127.0.0.1#5053"
+    /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper delete service dns forwarding options
+    /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper set service dns forwarding cache-size 2500
+    /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper set service dns forwarding options "no-resolv"
     /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper set service dns forwarding options "server=1.1.1.1"
     /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper set service dns forwarding options "server=1.0.0.1"
     /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper commit
@@ -23,8 +25,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
 else
     echo "revert configuration changes"
     /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper begin
-    /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper delete service dns forwarding options "no-resolv"
-    /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper delete service dns forwarding options "server=127.0.0.1#5053"
+    /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper delete service dns forwarding options
     /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper commit
     /opt/vyatta/sbin/vyatta-cfg-cmd-wrapper end
 fi
